@@ -1,0 +1,25 @@
+<div class="container">
+  <h3>@ngrx/store party planner</h3>
+  <div class="row">
+    <div class="col m12 s12">
+      <party-stats [invited]="model?.total" [attending]="model?.attending" [attendingPercent]="model?.attendingPercent" [guests]="model?.guests">
+      </party-stats>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col m12 s12">
+      <person-input (addPerson)="addPerson($event)"></person-input>
+    </div>
+    <div class="col m12 s12">
+      <party-filter (updateFilter)="updateFilter($event)"></party-filter>
+      <div *ngIf="model && model.people && model.people.length">
+        <person-list [people]="model.people" (addGuest)="addGuest($event)" (removeGuest)="removeGuest($event)" (toggleAttending)="toggleAttending($event)" (removePerson)="removePerson($event)">
+        </person-list>
+      </div>
+      <div *ngIf="!model || !model.people || !model.people.length">No people yet!</div>
+    </div>
+  </div>
+</div>
+<top-button [duration]="500"></top-button>
+<ngrx-store-log-monitor toggleCommand="ctrl-h" positionCommand="ctrl-m">
+</ngrx-store-log-monitor>

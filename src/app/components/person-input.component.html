@@ -1,0 +1,6 @@
+<div class="input-field">
+  <input type="text" (keyup.enter)="add(personName)" #personName value="" placeholder="Party person name">
+</div>
+<div class="right-align">
+  <button class="waves-effect waves-light btn blue darken-4" type="button" (click)="add(personName)">Add new person</button>
+</div>

@@ -1,0 +1,38 @@
+<hr />
+<table class="centered bordered highlight responsive-table">
+  <thead>
+    <tr>
+      <th data-field="Person">Person</th>
+      <th data-field="Guests">Guest count</th>
+      <th data-field="Add Guests">Add guest</th>
+      <th data-field="Remove Guests">Remove guest</th>
+      <th data-field="Attending">Attending?</th>
+      <th data-field="Remove person">Delete person</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let person of people" [class.attending]="person.attending">
+      <td>{{person.name}}</td>
+      <td>{{person.guests}}</td>
+      <td>
+        <button class="waves-effect waves-light btn" (click)="addGuest.emit(person.id)">+</button>
+      </td>
+      <td>
+        <button class="waves-effect waves-light btn" (click)="removeGuest.emit(person.id)">-</button>
+      </td>
+      <td>
+        <div class="switch">
+          <label>
+            Off
+            <input (click)="toggleAttending.emit(person.id)" [checked]="person.attending" type="checkbox">
+            <span class="lever"></span> On
+          </label>
+        </div>
+      </td>
+      <td>
+        <button class="waves-effect waves-light btn red darken-4" (click)="removePerson.emit(person.id)">Delete person</button>
+      </td>
+    </tr>
+  </tbody>
+</table>

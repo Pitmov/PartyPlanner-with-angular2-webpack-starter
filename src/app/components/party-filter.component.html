@@ -1,0 +1,7 @@
+<div class="mde-select">
+  <select #selectList (change)="updateFilter.emit(selectList.value)">
+    <option *ngFor="let filter of filters" value="{{filter.action}}">
+      {{filter.friendly}}
+    </option>
+  </select>
+</div>
